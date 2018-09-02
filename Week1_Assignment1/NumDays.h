@@ -39,7 +39,9 @@ public:
 	//overloaded operator  functions
 	NumDays operator + (const NumDays &); // Overloaded +
 	NumDays operator - (const NumDays &); // Overloaded - 
-	//NumDays operator ++ ();
+	NumDays operator++();
+	NumDays operator++(int);
+
 	//NumDays operator -- ();
 };
 

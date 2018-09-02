@@ -35,13 +35,16 @@ NumDays NumDays::operator - (const NumDays &sub)
 	temp.findNumOfDays();
 	return temp;
 }
-//NumDays NumDays::operator ++ ()
-//{
-//	++hours;
-//	findNumOfDays();
-//	return *this;
-//}
-//NumDays NumDays::operator ++ (double)
-//{
-//
-//}
+NumDays NumDays::operator++()
+{
+	++hours;
+	findNumOfDays();
+	return *this;
+}
+NumDays NumDays::operator++(int)
+{
+	NumDays temp(days,hours);
+	hours++;
+	findNumOfDays();
+	return temp;
+}
