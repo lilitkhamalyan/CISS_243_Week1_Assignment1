@@ -1,9 +1,10 @@
 //Implementation file for the NumDays class
 #include <iostream>
+#include <cstdlib> // needed for abs().
 #include "NumDays.h"
 using namespace std;
 
-//Definition os member function findNumOfDays.
+//Definition of member function findNumOfDays.
 void NumDays::findNumOfDays() 
 {
 	bool keepLooping = true;
@@ -22,6 +23,7 @@ void NumDays::findNumOfDays()
 	}
 	while (keepLooping);
 }
+// Overloaded + operator.
 NumDays NumDays::operator + (const NumDays &add)
 {
 	NumDays temp;
@@ -29,32 +31,37 @@ NumDays NumDays::operator + (const NumDays &add)
 	temp.findNumOfDays();
 	return temp;
 }
+// Overloaded - operator.
 NumDays NumDays::operator - (const NumDays &sub)
 {
 	NumDays temp;
-	temp.hours = hours - sub.hours; 
+	temp.hours = abs(hours - sub.hours); 
 	temp.findNumOfDays();
 	return temp;
 }
+// Overloaded prefix ++ operator.
 NumDays NumDays::operator++()
 {
 	++hours;
 	findNumOfDays();
-	return *this;
+	return NumDays(hours);
 }
+// Overloaded postfix ++ operator.
 NumDays NumDays::operator++(int)
 {
-	NumDays temp(days,hours);
+	//NumDays temp(days,hours);
 	hours++;
 	findNumOfDays();
-	return temp;
+	return NumDays(hours);
 }
+// Overloaded prefix -- operator.
 NumDays NumDays::operator--()
 {
 	--hours;
 	findNumOfDays();
-	return *this;
+	return NumDays(hours);
 }
+// Overloaded postfix -- operator.
 NumDays NumDays::operator--(int)
 {
 	NumDays temp(days, hours);
